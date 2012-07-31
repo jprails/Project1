@@ -1,0 +1,43 @@
+<h1>New petdetail</h1>
+<%= form_for @petdetail,:url => {:action => :create, :id => @appointment.id} do |f| %>
+  <% if @petdetail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@petdetail.errors.count, "error") %> prohibited this petdetail from being saved:</h2>
+
+      <ul>
+      <% @petdetail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Pet Name" %><br />
+    <%= f.text_field :nameofpet %>
+  </div>
+  <div class="field">
+    <%= f.label "Type of Pet" %><br />
+    <%= f.text_field :typeofpet %>
+  </div>
+  <div class="field">
+    <%= f.label "Breed" %><br />
+    <%= f.text_field :breed %>
+  </div>
+  <div class="field">
+    <%= f.label "Age" %><br />
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.number_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label "Date of Last Visit" %><br />
+    <%= f.date_select :lastvisitdate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

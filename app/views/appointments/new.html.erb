@@ -1,0 +1,41 @@
+<h1>New appointments</h1>
+
+<%= form_for @appointment,:url => {:action => :create, :id => @doctor.id} do |f| %>
+<% if @appointment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+    <ul>
+    <% @appointment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= f.label "Date of Visit" %><br />
+  <%= f.date_select :DateOfVisit %>
+</div>
+<div class="field">
+  <%= f.label :Pet %><br />
+  <%= f.text_field :Pet %>
+</div>
+<div class="field">
+  <%= f.label :Customer %><br />
+  <%= f.text_field :Customer %>
+</div>
+<div class="field">
+  <%= f.label "Requires Reminder Of Appointment" %><br />
+  <%= f.check_box :Reminder %>
+</div>
+<div class="field">
+  <%= f.label "Reason for Visit" %><br />
+  <%= f.text_area :Reason %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<%end%>
+
+<%= link_to 'Back', appointments_path %>
